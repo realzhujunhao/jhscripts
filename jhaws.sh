@@ -18,7 +18,7 @@ rm() {
 }
 
 ls() {
-    aws s3 ls "$1"
+    aws s3 ls "$BUCKET_NAME"
 }
 
 case $1 in
@@ -32,7 +32,7 @@ case $1 in
         rm $2
         ;;
     ls)
-        ls $2
+        ls
         ;;
     *)
         echo "jhaws cp/share/rm filepath"
