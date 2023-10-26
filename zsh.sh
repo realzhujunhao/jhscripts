@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Update package lists
-sudo yum update -y
+sudo apt update
 
 # Install Zsh
-sudo yum install -y zsh
+sudo apt install zsh
 
 # Set Zsh as the default shell for the current user
 chsh -s $(which zsh)
