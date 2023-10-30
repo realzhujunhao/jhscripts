@@ -3,14 +3,26 @@
 BUCKET_NAME="junhao"
 
 cp() {
-    aws s3 cp "$1" "s3://$BUCKET_NAME/"
+    local file_path="$1"
+    aws s3 cp "$file_path" "s3://$BUCKET_NAME/"
+}
+
+presign_and_copy() {
+    local file_path="$1"
+    url=$(aws s3 presign "s3://$BUCKET_NAME/$(basename $file_path)" --expires-in 604800)
+    echo $url | pbcopy
+    echo "share link has been copied to paste board"
 }
 
 share() {
-    aws s3 cp "$1" "s3://$BUCKET_NAME/"
-    url=$(aws s3 presign "s3://$BUCKET_NAME/$(basename $1)" --expires-in 604800)
-    echo $url | pbcopy
-    echo "share link has been copied to paste board"
+    local file_path="$1"
+    cp "$file_path"
+    presign_and_copy "$file_path"
+}
+
+link() {
+    local file_path="$1"
+    presign_and_copy "$file_path"
 }
 
 rm() {
@@ -33,6 +45,9 @@ case $1 in
         ;;
     ls)
         ls
+        ;;
+    link)
+        link $2
         ;;
     *)
         echo "jhaws cp/share/rm filepath"
