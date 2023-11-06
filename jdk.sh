@@ -14,9 +14,10 @@ sudo wget ${ORACLE}/java/${VERSION}/latest/${FILENAME}
 sudo tar -zxvf ${FILENAME}
 DIRNAME=$(ls -d */)
 sudo mv ${DIRNAME} ${VERSION}
+sudo rm ${FILENAME}
 
 cd ~
 echo "export JAVA_HOME=${JAVA_PATH}" >> ~/.zshrc
-echo "export PATH=${JAVA_HOME}/bin:\$PATH" >> ~/.zshrc
+echo "export PATH=\$JAVA_HOME/bin:\$PATH" >> ~/.zshrc
 
 source ~/.zshrc
