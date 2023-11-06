@@ -15,5 +15,5 @@ sudo mv ${DIRNAME} ${VERSION}
 cd ~
 echo "# Nvim" >> ~/.zshrc
 echo "export NVIM_HOME=${NVIM_PATH}" >> ~/.zshrc
-echo "export PATH=\NVIM_HOME/bin:\$PATH" >> ~/.zshrc
+echo "export PATH=\$NVIM_HOME/bin:\$PATH" >> ~/.zshrc
 source ~/.zshrc
