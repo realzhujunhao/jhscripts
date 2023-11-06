@@ -16,5 +16,5 @@ sudo rm ${ZIPNAME}
 cd ~
 echo "# Gradle" >> ~/.zshrc
 echo "GRADLE_HOME=${GRADLE_PATH}" >> ~/.zshrc
-echo "PATH=\$GRADLE_HOME/bin:\$PATH" >> ~/.zshrc
+echo "PATH=\$GRADLE_HOME:\$PATH" >> ~/.zshrc
 source ~/.zshrc
