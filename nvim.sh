@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/zsh
 
 cd ~/
 git clone https://github.com/LuaJIT/LuaJIT.git
@@ -9,11 +9,11 @@ sudo make install
 NODE_VERSION=v21.1.0
 NODE_ROOT=/opt/nodejs
 NODE_PATH=${NODE_ROOT}/${NODE_VERSION}
+PLATFORM=linux-x64
 
 sudo mkdir ${NODE_ROOT}
 cd ${NODE_ROOT}
 
-PLATFORM=linux-x64
 
 sudo wget https://nodejs.org/dist/${NODE_VERSION}/node-${NODE_VERSION}-${PLATFORM}.tar.xz
 sudo tar -xvf node-${NODE_VERSION}-${PLATFORM}.tar.xz
