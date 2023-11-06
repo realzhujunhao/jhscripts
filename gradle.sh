@@ -7,7 +7,7 @@ ZIPNAME=gradle-${VERSION}-bin.zip
 
 sudo mkdir ${GRADLE_ROOT}
 cd ${GRADLE_ROOT}
-sudo wget https://gradle.org/next-steps/?version=${VERSION}&format=bin
+sudo wget "https://gradle.org/next-steps/?version=${VERSION}&format=bin" -O ${ZIPNAME}
 sudo unzip ${ZIPNAME}
 DIRNAME=$(ls -d */)
 sudo mv ${DIRNAME} ${VERSION}
