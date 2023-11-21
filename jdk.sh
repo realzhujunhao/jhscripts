@@ -1,7 +1,8 @@
 #!/usr/bin/zsh
 
 VERSION=17
-PLATFORM=linux-x64
+# PLATFORM=linux-x64
+PLATFORM=linux-aarch64
 FILENAME=jdk-${VERSION}_${PLATFORM}_bin.tar.gz
 ORACLE=https://download.oracle.com
 
