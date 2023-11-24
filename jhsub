@@ -1,0 +1,44 @@
+#! /bin/zsh
+
+OUT_DIR="${2%.*}_out"
+
+COMMON_PARAMS=(
+    --max_line_width 42 
+    --max_line_count 1 
+    --word_timestamps True 
+    --model large 
+    -o ${OUT_DIR}
+    --threads 10
+)
+
+translate() {
+    mkdir -p "${OUT_DIR}"
+    whisper "$1" ${COMMON_PARAMS[@]} --task translate --language Korean
+}
+
+transcribe() {
+    mkdir -p "${OUT_DIR}"
+    whisper "$1" ${COMMON_PARAMS[@]} --task transcribe --language English
+}
+
+cleanup() {
+    find . -type f \( -name "*.json" -o -name "*.srt" -o -name "*.txt" -o -name "*.tsv" -o -name "*.vtt" \) -exec rm {} +
+    find . -type d -name "*_out" -exec rm -r {} +
+}
+
+case $1 in
+    translate)
+        translate $2
+        ;;
+    transcribe)
+        transcribe $2
+        ;;
+    cleanup)
+        cleanup
+        ;;
+    *)
+        echo "jhsub translate/transcribe inputpath"
+        echo "jhsub cleanup"
+    esac
+
+

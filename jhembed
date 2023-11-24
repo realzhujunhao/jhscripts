@@ -1,0 +1,12 @@
+#! /bin/zsh
+
+if [ "$#" -ne 3 ]; then
+    echo "Usage: $0 <input_movie> <subtitle_file> <output_movie>"
+    exit 1
+fi
+
+input_movie="$1"
+subtitle_file="$2"
+output_movie="$3"
+
+ffmpeg -i "$input_movie" -vf "subtitles=$subtitle_file" "$output_movie"
