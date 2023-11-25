@@ -3,11 +3,8 @@
 OUT_DIR="${2%.*}_out"
 
 COMMON_PARAMS=(
-    --max_line_width 42 
-    --max_line_count 1 
-    --word_timestamps True 
-    --model large 
-    -o ${OUT_DIR}
+    --model medium 
+    --output_dir ${OUT_DIR}
     --threads 10
 )
 
@@ -18,7 +15,7 @@ translate() {
 
 transcribe() {
     mkdir -p "${OUT_DIR}"
-    whisper "$1" ${COMMON_PARAMS[@]} --task transcribe --language English
+    whisper "$1" ${COMMON_PARAMS[@]} --task transcribe --language English --max_line_width 42 --max_line_count 1 --word_timestamps True
 }
 
 cleanup() {
