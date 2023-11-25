@@ -1,0 +1,6 @@
+#! /bin/zsh
+
+INPUT=$1
+OUTPUT=$2
+
+ffmpeg -i "${INPUT}" -vcodec libx265 -crf 28 ${OUTPUT}
