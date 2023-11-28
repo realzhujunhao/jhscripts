@@ -1,0 +1,14 @@
+#! /bin/zsh
+#
+timestamp=$(date +%Y%m%d_%H%M%S)
+
+for img_path in "$@"
+do
+    filename=$(basename "$img_path")
+
+    unique_filename="${timestamp}_${filename}"
+
+    aws s3 cp "$img_path" "s3://mdimage/$unique_filename" > /dev/null 2>&1
+
+    echo "https://mdimage.s3.amazonaws.com/$unique_filename"
+done
