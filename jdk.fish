@@ -4,7 +4,7 @@ set -l pwd (pwd)
 set -l jdk_version 17
 set -l platform linux
 set -l architect $argv[1]
-set -l filename jdk-"$jdk_version"_"$platform"-"$architect"_bin.tar.gz
+set -l filename jdk-{$jdk_version}_{$platform}-{$architect}_bin.tar.gz
 set -l oracle https://download.oracle.com
 
 echo "downloading jdk"
