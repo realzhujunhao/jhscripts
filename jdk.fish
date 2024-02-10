@@ -1,17 +1,17 @@
 #!/usr/bin/env fish
 
 set -l pwd (pwd)
-set -l version 17
+set -l jdk_version 17
 set -l platform linux
 set -l architect $argv[1]
-set -l filename jdk-{$version}_{$platform}-{$architect}_bin.tar.gz
+set -l filename jdk-{$jdk_version}_{$platform}-{$architect}_bin.tar.gz
 set -l oracle https://download.oracle.com
 
 echo "downloading jdk"
-set -l url $oracle/java/$version/latest/$filename
+set -l url $oracle/java/$jdk_version/latest/$filename
 
 set -l java_root /opt/jdk
-set -l java_path /opt/jdk/$version
+set -l java_path /opt/jdk/$jdk_version
 
 echo "making directory"
 sudo mkdir $java_root
