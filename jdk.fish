@@ -23,8 +23,6 @@ sudo rm $java_root/$filename
 echo "writing environment variables"
 set -l fish_config ~/.config/fish/config.fish
 set -l java_path $java_root/*
-echo "this is java root: $java_root"
-echo "this is java path: $java_path"
 echo "set -gx JAVA_HOME $java_path" >> $fish_config
 echo "set -gx PATH \$JAVA_HOME/bin \$PATH" >> $fish_config
 
