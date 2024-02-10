@@ -1,5 +1,10 @@
 #!/usr/bin/env fish
 
+if (count $argv) -ne 1
+    echo "jdk.fish x64/aarch64"
+    exit 1
+end
+
 set -l pwd (pwd)
 set -l jdk_version 17
 set -l platform linux
