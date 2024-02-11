@@ -13,7 +13,7 @@ echo "downloading kafka"
 sudo mkdir $kafka_root
 cd $kafka_root
 
-wget $kafka_url
+sudo wget $kafka_url
 sudo tar -zxvf $kafka_filename
 sudo rm $kafka_root/$kafka_filename
 
