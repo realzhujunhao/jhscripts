@@ -19,8 +19,8 @@ sudo rm $kafka_root/$kafka_filename
 
 echo "writing environment variables"
 set -l fish_config ~/.config/fish/config.fish
-set -l kafka_path $kafka_root/*
-echo "set -gx KAFKA_HOME $kafka_path" >> $fish_config
+set -l kafka_path $kafka_root/*kafka*
+echo "set -gx KAFKA_HOME $kafka_path[1]" >> $fish_config
 echo "set -gx PATH \$KAFKA_HOME/bin \$PATH" >> $fish_config
 
 echo "please run the following command"
