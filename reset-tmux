@@ -1,0 +1,13 @@
+#!/usr/bin/env fish
+
+tmux kill-server    
+
+while ! tmux new-session -s main -n root -d
+    echo "not launched, retry"
+end
+echo "success"
+
+tmux new-window -t main: -n local
+tmux new-window -t main: -n run
+tmux new-window -t main: -n remote
+tmux new-window -t main: -n run
