@@ -1,0 +1,4 @@
+#!/usr/bin/env fish
+
+set texfile $argv[1]
+latexmk -pdf -pvc -shell-escape $texfile
