@@ -1,0 +1,42 @@
+#!/usr/bin/env fish
+
+function success_print
+    set_color green
+    echo ">>> $argv[1]"
+    set_color normal
+end
+
+function error_print 
+    set_color red
+    echo ">>> $argv[1]"
+    set_color normal
+end
+
+if test (count $argv) -ne 2
+    error_print "use case"
+    error_print "$(status basename) <username@ip> <executable>"
+    exit 1
+end
+
+set remote $argv[1]
+set executable $argv[2]
+set target_path "~/$(basename $executable)"
+
+if not scp $executable "$remote:~"
+    error_print "upload failed"
+    exit 1
+end
+success_print "upload succeeded"
+
+if not ssh -t $remote "sudo chmod +x $target_path && $target_path" 
+    error_print "execute failed"
+    exit 1
+end
+success_print "execute succeeded"
+
+
+if not ssh $remote "rm $target_path" 
+    error_print "remove failed"
+    exit 1
+end
+success_print "remove succeeded"
